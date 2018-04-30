@@ -1,3 +1,5 @@
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -18,7 +20,7 @@ public class Livre {
 
 	@ManyToMany
 	@JoinTable(name = "COMPO", joinColumns = @JoinColumn(name = "ID_LIV", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_EMP", referencedColumnName = "ID"))
-	private Emprunt empr;
+	private Set<Emprunt> empr;
 
 	private String auteur;
 

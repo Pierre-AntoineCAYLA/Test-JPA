@@ -1,3 +1,5 @@
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,7 +26,7 @@ public class Emprunt {
 
 	@ManyToMany
 	@JoinTable(name = "COMPO", joinColumns = @JoinColumn(name = "ID_EMP", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_LIV", referencedColumnName = "ID"))
-	private Livre livre;
+	private Set<Livre> livre;
 
 	@ManyToOne
 	@JoinColumn(name = "ID")
@@ -47,7 +49,7 @@ public class Emprunt {
 		return idClient;
 	}
 
-	public Livre getLivre() {
+	public Set<Livre> getLivre() {
 
 		return livre;
 	}

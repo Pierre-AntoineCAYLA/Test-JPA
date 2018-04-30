@@ -13,7 +13,7 @@
 
 	</appender>
 
-	<logger name="TestJpa.class" level="DEBUG">
+	<logger name="TestJpa" level="DEBUG">
 
 		<appender-ref ref="STDOUT" />
 
