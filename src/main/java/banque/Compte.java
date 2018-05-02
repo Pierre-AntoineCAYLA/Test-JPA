@@ -26,7 +26,7 @@ public abstract class Compte {
 	private double solde;
 
 	@ManyToOne
-	@JoinColumn(name = "ID")
+	@JoinColumn(name = "ID_CLIENT")
 	private Client client;
 
 	@ManyToMany
@@ -37,13 +37,12 @@ public abstract class Compte {
 		return numero;
 	}
 
-	public Compte(int id, String numero, double solde, Client client, Set<Operation> opertion) {
+	public Compte(int id, String numero, double solde, Client client) {
 		super();
 		this.id = id;
 		this.numero = numero;
 		this.solde = solde;
 		this.client = client;
-		this.opertion = opertion;
 	}
 
 	public int getId() {

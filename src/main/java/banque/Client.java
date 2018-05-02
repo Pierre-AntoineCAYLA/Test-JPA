@@ -1,6 +1,6 @@
 package banque;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -22,7 +22,7 @@ public class Client {
 	@Column(name = "PRENOM")
 	String prenom;
 	@Column(name = "DATE_NAISSANCE")
-	LocalDateTime dateNaissance;
+	LocalDate dateNaissance;
 
 	@Embedded
 	private Adresse adress;
@@ -31,18 +31,16 @@ public class Client {
 	private Set<Compte> compte;
 
 	@ManyToOne
-	@JoinColumn(name = "ID")
+	@JoinColumn(name = "ID_BANQUE")
 	private Banque banque;
 
-	public Client(int id, String nom, String prenom, LocalDateTime dateNaissance, Adresse adress, Set<Compte> compte,
-			Banque banque) {
+	public Client(int id, String nom, String prenom, LocalDate localDate, Adresse adress, Banque banque) {
 		super();
 		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
-		this.dateNaissance = dateNaissance;
+		this.dateNaissance = localDate;
 		this.adress = adress;
-		this.compte = compte;
 		this.banque = banque;
 	}
 
@@ -58,7 +56,7 @@ public class Client {
 		return prenom;
 	}
 
-	public LocalDateTime getDateNaissance() {
+	public LocalDate getDateNaissance() {
 		return dateNaissance;
 	}
 
@@ -70,7 +68,7 @@ public class Client {
 		this.prenom = prenom;
 	}
 
-	public void setDateNaissanc(LocalDateTime dateNaissance) {
+	public void setDateNaissanc(LocalDate dateNaissance) {
 		this.dateNaissance = dateNaissance;
 	}
 

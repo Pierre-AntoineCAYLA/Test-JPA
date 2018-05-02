@@ -1,7 +1,6 @@
 package banque;
 
-import java.time.LocalDateTime;
-import java.util.Set;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,9 +13,8 @@ public class Virement extends Operation {
 	@Column(name = "BENEFICIAIRE")
 	String beneficiaire;
 
-	public Virement(int id, LocalDateTime date, double montant, String motif, Set<Operation> opertion,
-			String beneficiaire) {
-		super(id, date, montant, motif, opertion);
+	public Virement(int id, LocalDate localDate, double montant, String motif, String beneficiaire) {
+		super(id, localDate, montant, motif);
 		this.beneficiaire = beneficiaire;
 	}
 

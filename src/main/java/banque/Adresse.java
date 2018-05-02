@@ -9,8 +9,11 @@ public class Adresse {
 	int codePostal;
 	String ville;
 
+	public Adresse() {
+
+	}
+
 	public Adresse(int numero, String rue, int codePostal, String ville) {
-		super();
 		this.numero = numero;
 		this.rue = rue;
 		this.codePostal = codePostal;
