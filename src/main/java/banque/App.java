@@ -13,6 +13,8 @@ public class App {
 		EntityManager em = entityManagerFactory.createEntityManager();
 		EntityTransaction et = em.getTransaction();
 		et.begin();
+
+		et.commit();
 		em.close();
 		entityManagerFactory.close();
 	}

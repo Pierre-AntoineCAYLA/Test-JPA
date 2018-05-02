@@ -24,14 +24,35 @@ public abstract class Operation {
 	@Column(name = "MONTANT")
 	double montant;
 	@Column(name = "MOTIF")
-	String Motif;
+	String motif;
 
 	@ManyToMany
-	@JoinTable(name = "CO_OP", joinColumns = @JoinColumn(name = "NUMERO", referencedColumnName = "NUMERO"), inverseJoinColumns = @JoinColumn(name = "ID", referencedColumnName = "ID"))
+	@JoinTable(name = "CO_OP", joinColumns = @JoinColumn(name = "ID_COMPTE", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_OPERATION", referencedColumnName = "ID"))
 	private Set<Operation> opertion;
 
-	public Operation() {
+	public Operation(int id, LocalDateTime date, double montant, String motif, Set<Operation> opertion) {
+		super();
+		this.id = id;
+		this.date = date;
+		this.montant = montant;
+		this.motif = motif;
+		this.opertion = opertion;
+	}
 
+	public int getId() {
+		return id;
+	}
+
+	public LocalDateTime getDate() {
+		return date;
+	}
+
+	public double getMontant() {
+		return montant;
+	}
+
+	public String getMotif() {
+		return motif;
 	}
 
 }

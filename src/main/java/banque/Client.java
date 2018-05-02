@@ -34,8 +34,44 @@ public class Client {
 	@JoinColumn(name = "ID")
 	private Banque banque;
 
-	public Client() {
+	public Client(int id, String nom, String prenom, LocalDateTime dateNaissance, Adresse adress, Set<Compte> compte,
+			Banque banque) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.dateNaissance = dateNaissance;
+		this.adress = adress;
+		this.compte = compte;
+		this.banque = banque;
+	}
 
+	public int getId() {
+		return id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public LocalDateTime getDateNaissance() {
+		return dateNaissance;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public void setDateNaissanc(LocalDateTime dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
 
 }

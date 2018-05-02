@@ -20,7 +20,22 @@ public class Banque {
 	@OneToMany
 	private Set<Client> client;
 
-	public Banque() {
+	public Banque(int id, String nom, Set<Client> client) {
+		super();
+		this.id = id;
+		this.nom = nom;
+		this.client = client;
+	}
 
+	public int getId() {
+		return id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 }
