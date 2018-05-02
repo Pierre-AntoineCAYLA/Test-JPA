@@ -3,20 +3,21 @@ package banque;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "assuranceVie")
-public class AssuranceVie extends Compte {
+@DiscriminatorValue("A")
+
+public class AssuranceVie extends AbstractCompte {
 
 	@Column(name = "DATE_FIN")
 	LocalDate dateFin;
 	@Column(name = "TAUX")
 	double taux;
 
-	public AssuranceVie(int id, String numero, double solde, Client client, LocalDate dateFin, double taux) {
-		super(id, numero, solde, client);
+	public AssuranceVie(String numero, double solde, Client client, LocalDate dateFin, double taux) {
+		super(numero, solde, client);
 		this.dateFin = dateFin;
 		this.taux = taux;
 	}

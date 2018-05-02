@@ -14,17 +14,16 @@ import javax.persistence.Table;
 @Table(name = "banque")
 public class Banque {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 
 	@Column(name = "NOM")
 	String nom;
 
-	@OneToMany
+	@OneToMany(mappedBy = "banque")
 	private Set<Client> client;
 
-	public Banque(int id, String nom) {
-		this.id = id;
+	public Banque(String nom) {
 		this.nom = nom;
 	}
 

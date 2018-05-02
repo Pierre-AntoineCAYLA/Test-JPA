@@ -20,10 +20,10 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>banque.Banque</class>
 		<class>banque.Client</class>
-		<class>banque.Compte</class>
+		<class>banque.AbstractCompte</class>
 		<class>banque.LivretA</class>
 		<class>banque.AssuranceVie</class>
-		<class>banque.Operation</class>
+		<class>banque.AbstractOperation</class>
 		<class>banque.Virement</class>
 		<properties>
 			<property name="javax.persistence.schema-generation.database.action"

@@ -3,7 +3,10 @@ package banque;
 import java.util.Set;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -14,13 +17,15 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "compte")
-public abstract class Compte {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "TYPE")
+@Table(name = "comptes")
+public class AbstractCompte {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "NUMERO", unique = true)
+	@Column(name = "NUMERO")
 	private String numero;
 	@Column(name = "SOLDE")
 	private double solde;
@@ -31,15 +36,14 @@ public abstract class Compte {
 
 	@ManyToMany
 	@JoinTable(name = "CO_OP", joinColumns = @JoinColumn(name = "ID_OPERATION", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_COMPTE", referencedColumnName = "ID"))
-	private Set<Operation> opertion;
+	private Set<AbstractOperation> opertion;
 
 	public String getNumero() {
 		return numero;
 	}
 
-	public Compte(int id, String numero, double solde, Client client) {
+	public AbstractCompte(String numero, double solde, Client client) {
 		super();
-		this.id = id;
 		this.numero = numero;
 		this.solde = solde;
 		this.client = client;

@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -16,6 +18,7 @@ import javax.persistence.Table;
 @Table(name = "client")
 public class Client {
 	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private int id;
 	@Column(name = "NOM")
 	String nom;
@@ -28,15 +31,14 @@ public class Client {
 	private Adresse adress;
 
 	@OneToMany
-	private Set<Compte> compte;
+	private Set<AbstractCompte> compte;
 
 	@ManyToOne
 	@JoinColumn(name = "ID_BANQUE")
 	private Banque banque;
 
-	public Client(int id, String nom, String prenom, LocalDate localDate, Adresse adress, Banque banque) {
+	public Client(String nom, String prenom, LocalDate localDate, Adresse adress, Banque banque) {
 		super();
-		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.dateNaissance = localDate;

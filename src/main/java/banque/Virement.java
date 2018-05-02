@@ -3,18 +3,18 @@ package banque;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "virement")
-public class Virement extends Operation {
+@DiscriminatorValue("V")
+public class Virement extends AbstractOperation {
 
 	@Column(name = "BENEFICIAIRE")
 	String beneficiaire;
 
-	public Virement(int id, LocalDate localDate, double montant, String motif, String beneficiaire) {
-		super(id, localDate, montant, motif);
+	public Virement(LocalDate localDate, double montant, String motif, String beneficiaire) {
+		super(localDate, montant, motif);
 		this.beneficiaire = beneficiaire;
 	}
 
